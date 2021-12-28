@@ -12,15 +12,20 @@
 }
 
 .container {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-self: center;
+    width: 480px;
+    height: 480px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #main {
     display: flex;
-    gap: 10px;
+    gap: 0px;
     flex-wrap: wrap;
+    background-color: gray;
 }
 
 .bottom {

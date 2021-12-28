@@ -1,29 +1,40 @@
 // EGG A SKETCH
 
-/* Creates a grid in which it creates 
-the number of divs that you select in
-the prompt */
-
-
-
-
-
-
-
+const grid = document.querySelector(".container");
 
 /* Creates n numberOfDivs depending on
 the user's input */
 
-for (numberOfDivs = 0; numberOfDivs < 16 ; numberOfDivs++) {
+numberOfDivs = prompt("Input the number of squares per side:");
+
+let gridArea = numberOfDivs * numberOfDivs;
+let widthAndHeight = 480 / numberOfDivs;
+
+// grid and divs creation
+for (i = 0; i < gridArea ; i++) {
     let div = document.createElement("div");
-
-    div.style.width = "100px";
-    div.style.height = "100px";
-    div.style.background = "red";
-
     document.getElementById("main").appendChild(div);
+
+    div.style.width = widthAndHeight + "px";
+    div.style.height = widthAndHeight + "px";
 }
 
-/* Erase button to ask again for number
-of divs and reset the grid */
+/* mouserover random color */
 
+function getRandomColor(){
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+addEventListener("click", function(){
+    let cell = grid.children;
+    for (let i = 0; i < gridArea; i++) {
+        cell[i].addEventListener("mouseover", function(event){
+            event.target.style.backgroundColor = getRandomColor();
+        })
+    }
+});
